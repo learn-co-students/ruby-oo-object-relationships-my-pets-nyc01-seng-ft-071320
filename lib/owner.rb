@@ -1,4 +1,4 @@
-#require 'pry'
+require 'pry'
 
 class Owner
   attr_reader :name, :species
@@ -42,5 +42,14 @@ class Owner
   def buy_dog(dog_name)
     new_dog = Dog.new(dog_name, self)
   end
+
+  def walk_dogs
+    dogs.each {|dog| dog.mood = "happy"}
+  end
+
+  def feed_cats
+    cats.each {|cat| cat.mood = "happy"}
+  end
+
 
 end

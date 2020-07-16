@@ -1,3 +1,4 @@
+require 'pry'
 class Owner
   # code goes here
   attr_reader :name, :species
@@ -30,5 +31,21 @@ class Owner
     @@all = []
   end 
 
+  def cats
+    Cat.all.select do |i| 
+      i.owner == self
+    end
+  end
 
+  def dogs
+    Dog.all.select do |i| 
+      i.owner == self
+    end
+  end
+
+  def buy_cat(cat_name)
+    Cat.new(cat_name, self)
+  end
+
+  
 end

@@ -1,10 +1,29 @@
+#require 'pry'
+
 class Owner
-  attr_reader :name
+  attr_reader :name, :species
 
-def initialize(name, species = human)
+  @@all = []
+
+def initialize(name)
   @name = name
-  @species = species
-end
-   # code goes here
-end
+  @species = "human"
+  @@all << self
+  end
 
+   def say_species
+    "I am a #{self.species}."
+  end
+
+  def self.all 
+    @@all
+  end
+#binding.pry
+  def self.count 
+    @@all.count 
+  end
+
+  def self.reset_all
+    @@all = []
+  end
+end

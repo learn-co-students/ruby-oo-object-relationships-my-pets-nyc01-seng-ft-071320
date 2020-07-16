@@ -1,3 +1,4 @@
+require 'pry'
 class Owner
 
   attr_reader :name, :species
@@ -25,4 +26,20 @@ class Owner
   def self.reset_all
     self.all.clear
   end
+
+  def cats
+    Cat.all.select do |cat|
+      
+      cat.owner == self
+      
+    end 
+  end
+
+  def buy_cat(name)
+    Cat.new(name, self)
+    self.cats 
+  end
 end
+
+#jacob = Owner.new("Jacob")
+#jacob.cats 

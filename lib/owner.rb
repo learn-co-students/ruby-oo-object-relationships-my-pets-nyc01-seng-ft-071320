@@ -4,6 +4,7 @@ class Owner
   attr_reader :name, :species
 
   @@all = []
+  @cats = []
   
   def initialize(name, species = "human")
     @name = name
@@ -27,10 +28,19 @@ class Owner
     "I am a #{@species}."
   end
 
-  def cats
-    
+  def buy_cat(cat)
+    cat = Cat.new(cat, self)
+    cats
   end
   
+  def cats
+    @cats = Cat.all.select do |cat| 
+      cat.owner == self
+    end
+  end
+
+
+
 end
 
 # binding.pry

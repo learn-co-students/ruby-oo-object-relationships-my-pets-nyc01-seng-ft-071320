@@ -15,6 +15,4 @@ class Cat
     @@all
   end
 
-  
-
 end

@@ -49,18 +49,31 @@ class Owner
   def feed_cats
     Cat.all.select{|cat| cat.mood = "happy"}
   end
-  def sell_pets
-    ownedCats = Cat.all.select{|cat| cat.owner == self}
-    ownedCats[0].mood = "nervous"
-    ownedDogs = Dog.all.select{|dog| dog.owner == self}
-    ownedDogs[0].mood = "nervous"
-    #binding.pry
+  # def sell_pets
+  #   ownedCats = Cat.all.select{|cat| cat.owner == self}
+  #   ownedCats[0].mood = "nervous"
+  #   ownedDogs = Dog.all.select{|dog| dog.owner == self}
+  #   ownedDogs[0].mood = "nervous"
+  #   #binding.pry
 
-    #@owner.cats.count = 0
-    #@owner.dogs.count = 0
-    ownedCats[0].owner = nil
-    ownedDogs[0].owner = nil
+  #   #@owner.cats.count = 0
+  #   #@owner.dogs.count = 0
+  #   ownedCats[0].owner = nil
+  #   ownedDogs[0].owner = nil
+  # end
+
+  def sell_pets
+    pets = self.dogs + self.cats
+    pets . each do |pet|
+      pet.mood = "nervous"
+      pet.owner = nil
+    end
   end
+
+  def list_pets
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+  end
+
 end
 
 

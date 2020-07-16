@@ -18,6 +18,8 @@ class Cat
     @@all
   end
 
-  
+  # def clear_cats
+  #   self.all.clear
+  # end
 
 end

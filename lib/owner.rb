@@ -34,13 +34,15 @@ class Owner
 
 
   def cats
-    Cat.all
+    Cat.all.select {|cat| cat.owner = self} 
   end
   def dogs
-    Dog.all
+    Dog.all.select {|dog| dog.owner = self}
   end
 
   def buy_cat(name)
+    
+    #binding.pry
     new_cat = Cat.new(name, self)
     #new_cat.name if new_cat
     #binding.pry
@@ -58,19 +60,21 @@ class Owner
   end 
   
   def sell_pets
-    pets_sold = []
+    #pets_sold = []
     Dog.all.each do |dog| 
       dog.mood = "nervous"
       dog.owner = nil
-#binding.pry
+      Dog.all.pop
+      #pets_sold << dog
     end
     Cat.all.each do |cat|
       cat.mood = "nervous"
       cat.owner = nil
-      pets_sold << cat
+      Cat.all.pop
+      #pets_sold << cat
     end
-    pets_sold
-    binding.pry
+    #pets_sold
+    #binding.pry
   end
 
   def list_pets

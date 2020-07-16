@@ -48,4 +48,33 @@ class Owner
   end
 
   
+  def buy_dog(dog_name)
+    Dog.new(dog_name, self)
+  end
+
+  def walk_dogs
+    self.dogs.each do |i|
+      i.mood = "happy"
+    end
+  end
+  
+  def feed_cats
+    self.cats.each do |i|
+      i.mood = "happy"
+    end
+  end
+
+  def sell_pets 
+
+    pets = self.dogs + self.cats 
+    pets.each do |i|
+      i.mood = "nervous"
+      i.owner = nil 
+    end    
+  end
+
+
+  def list_pets
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+  end
 end

@@ -11,10 +11,6 @@ class Owner
     @@all << self
   end
 
-  def say_species
-    "I am a #{@species}."
-  end
-
   def self.all
     @@all
   end
@@ -27,7 +23,13 @@ class Owner
     @@all = []
   end
 
+  def say_species
+    "I am a #{@species}."
+  end
 
+  def cats
+    
+  end
   
 end
 

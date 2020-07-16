@@ -1,5 +1,3 @@
-require 'pry'
-
 class Owner
   attr_reader :name, :species
 
@@ -59,9 +57,7 @@ class Owner
     cats.each do |cat|
        cat.mood = "nervous"
        cat.owner = nil
-
     end
-
   end
 
   def list_pets

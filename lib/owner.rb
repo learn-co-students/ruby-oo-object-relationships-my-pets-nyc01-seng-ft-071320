@@ -34,10 +34,10 @@ class Owner
 
 
   def cats
-    Cat.all.select {|cat| cat.owner = self} 
+    Cat.all.select {|cat| cat.owner == self} 
   end
   def dogs
-    Dog.all.select {|dog| dog.owner = self}
+    Dog.all.select {|dog| dog.owner == self}
   end
 
   def buy_cat(name)
@@ -64,13 +64,13 @@ class Owner
     Dog.all.each do |dog| 
       dog.mood = "nervous"
       dog.owner = nil
-      Dog.all.pop
+      # Dog.all.pop
       #pets_sold << dog
     end
     Cat.all.each do |cat|
       cat.mood = "nervous"
       cat.owner = nil
-      Cat.all.pop
+      # Cat.all.pop
       #pets_sold << cat
     end
     #pets_sold
@@ -78,7 +78,7 @@ class Owner
   end
 
   def list_pets
-    "I have #{Dog.all.count} dog(s), and #{Cat.all.count} cat(s)."
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
   end
 
 
